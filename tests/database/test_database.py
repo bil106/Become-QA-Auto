@@ -70,8 +70,20 @@ def test_detailed_orders():
     assert orders[0][2]== 'солодка вода'
     assert orders[0][3]== 'з цукром'
 
+@pytest.mark.database
+def test_check_not_found_user():
+    db = Database()
+    user = db.get_user_address_by_name('Sem')
+
+    assert len(user)== 0
 
 
+@pytest.mark.database
+def test_delete_inccorect_product():
+    db = Database()
     
+    qnt = db.delete_product_by_id(0)
+
+    assert AssertionError   
 
 
